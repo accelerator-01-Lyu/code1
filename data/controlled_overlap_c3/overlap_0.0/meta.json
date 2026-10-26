@@ -1,0 +1,20 @@
+{
+  "overlap": 0.0,
+  "N": 2000,
+  "d": 5,
+  "c": 2,
+  "seed": 3000,
+  "priors": [
+    0.85,
+    0.15
+  ],
+  "balanced": false,
+  "class_sizes": [
+    1700,
+    300
+  ],
+  "D_target": 4.47213595499958,
+  "D_empirical": 4.418878022067564,
+  "overlap_empirical": 0.010166738095448213,
+  "deviation": 0.010166738095448213
+}

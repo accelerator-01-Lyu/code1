@@ -1,0 +1,518 @@
+[
+  {
+    "prediction_id": "P3",
+    "dataset": "iris",
+    "test": "LAMBDA2N",
+    "estimate": 0.25,
+    "ci_lo": -0.004633102710548508,
+    "ci_hi": 0.013077547154992968,
+    "onesided_lo": -0.0031345662831100294,
+    "drop_mean": 0.0042222222222222305,
+    "boot_lo": -0.004222222222222205,
+    "boot_hi": 0.012666666666666685,
+    "margin": "(0.5, 2.0)",
+    "verdict": "REJECTED",
+    "seed_set": "P3",
+    "dz": 0.17804018491740434,
+    "theory_assumption_to_revise": "Revise Thm3 (A5): lambda2/n not the right scale"
+  },
+  {
+    "prediction_id": "P3",
+    "dataset": "wine",
+    "test": "LAMBDA2N",
+    "estimate": 0.25,
+    "ci_lo": -0.0012844599559327444,
+    "ci_hi": 0.018138392540202573,
+    "onesided_lo": 0.0003589496428789071,
+    "drop_mean": 0.008426966292134914,
+    "boot_lo": 8.141635513917814e-17,
+    "boot_hi": 0.017977528089887753,
+    "margin": "(0.5, 2.0)",
+    "verdict": "REJECTED",
+    "seed_set": "P3",
+    "dz": 0.3240184137075585,
+    "theory_assumption_to_revise": "Revise Thm3 (A5): lambda2/n not the right scale"
+  },
+  {
+    "prediction_id": "P3",
+    "dataset": "glass",
+    "test": "LAMBDA2N",
+    "estimate": 0.0,
+    "ci_lo": -0.003947284352800303,
+    "ci_hi": 0.025754137935354804,
+    "onesided_lo": -0.0014341827115030327,
+    "drop_mean": 0.01090342679127725,
+    "boot_lo": -0.002647975077881631,
+    "boot_hi": 0.024926012461059133,
+    "margin": "(0.5, 2.0)",
+    "verdict": "REJECTED",
+    "seed_set": "P3",
+    "dz": 0.27415565733222663,
+    "theory_assumption_to_revise": "Revise Thm3 (A5): lambda2/n not the right scale"
+  },
+  {
+    "prediction_id": "P3",
+    "dataset": "ecoli",
+    "test": "LAMBDA2N",
+    "estimate": 2.0,
+    "ci_lo": 0.003351907966499496,
+    "ci_hi": 0.05696555235096083,
+    "onesided_lo": 0.007888274487649252,
+    "drop_mean": 0.030158730158730166,
+    "boot_lo": 0.0054563492063492295,
+    "boot_hi": 0.05595238095238096,
+    "margin": "(0.5, 2.0)",
+    "verdict": "CONFIRMED",
+    "seed_set": "P3",
+    "dz": 0.42009660217634087,
+    "theory_assumption_to_revise": ""
+  },
+  {
+    "prediction_id": "P3",
+    "dataset": "aggregation",
+    "test": "LAMBDA2N",
+    "estimate": 0.75,
+    "ci_lo": -0.008220652255000679,
+    "ci_hi": 0.018795948363291584,
+    "onesided_lo": -0.005934719187641148,
+    "drop_mean": 0.005287648054145452,
+    "boot_lo": -0.004018612521150652,
+    "boot_hi": 0.019586505922165764,
+    "margin": "(0.5, 2.0)",
+    "verdict": "REJECTED",
+    "seed_set": "P3",
+    "dz": 0.14616496429962356,
+    "theory_assumption_to_revise": "Revise Thm3 (A5): lambda2/n not the right scale"
+  },
+  {
+    "prediction_id": "P3",
+    "dataset": "compound",
+    "test": "LAMBDA2N",
+    "estimate": 3.0,
+    "ci_lo": 0.00044981431994954926,
+    "ci_hi": 0.038815014418563415,
+    "onesided_lo": 0.0036959769582611546,
+    "drop_mean": 0.019632414369256484,
+    "boot_lo": 0.004260651629072676,
+    "boot_hi": 0.03993316624895572,
+    "margin": "(0.5, 2.0)",
+    "verdict": "REJECTED",
+    "seed_set": "P3",
+    "dz": 0.38216216706885564,
+    "theory_assumption_to_revise": "Revise Thm3 (A5): lambda2/n not the right scale"
+  },
+  {
+    "prediction_id": "P4",
+    "dataset": "iris",
+    "test": "TOST",
+    "estimate": 0.009111111111111118,
+    "ci_lo": 8.844924351787686e-05,
+    "ci_hi": 0.01813377297870436,
+    "worst_pair_mean": 0.009111111111111118,
+    "margin": 0.005,
+    "verdict": "REJECTED",
+    "seed_set": "P4",
+    "pairwise": [
+      {
+        "pair": [
+          0.1,
+          1.0
+        ],
+        "mean_diff": 0.00022222222222221624,
+        "tost_p": 0.10945700984536494,
+        "equiv": false
+      },
+      {
+        "pair": [
+          0.1,
+          10.0
+        ],
+        "mean_diff": -0.001555555555555558,
+        "tost_p": 0.2427774660537867,
+        "equiv": false
+      },
+      {
+        "pair": [
+          0.1,
+          100.0
+        ],
+        "mean_diff": 0.00755555555555556,
+        "tost_p": 0.6865716544878299,
+        "equiv": false
+      },
+      {
+        "pair": [
+          1.0,
+          10.0
+        ],
+        "mean_diff": -0.0017777777777777744,
+        "tost_p": 0.28120592125909616,
+        "equiv": false
+      },
+      {
+        "pair": [
+          1.0,
+          100.0
+        ],
+        "mean_diff": 0.007333333333333344,
+        "tost_p": 0.6619000866363172,
+        "equiv": false
+      },
+      {
+        "pair": [
+          10.0,
+          100.0
+        ],
+        "mean_diff": 0.009111111111111118,
+        "tost_p": 0.8204574440604616,
+        "equiv": false
+      }
+    ],
+    "theory_assumption_to_revise": "Revise Prop.1: C/sqrt(alpha0) bound too loose"
+  },
+  {
+    "prediction_id": "P4",
+    "dataset": "wine",
+    "test": "TOST",
+    "estimate": 0.002621722846441969,
+    "ci_lo": -0.00442658798356564,
+    "ci_hi": -0.0008168577093182982,
+    "worst_pair_mean": -0.002621722846441969,
+    "margin": 0.005,
+    "verdict": "CONFIRMED",
+    "seed_set": "P4",
+    "pairwise": [
+      {
+        "pair": [
+          0.1,
+          1.0
+        ],
+        "mean_diff": -0.002621722846441969,
+        "tost_p": 0.005793756540209743,
+        "equiv": true
+      },
+      {
+        "pair": [
+          0.1,
+          10.0
+        ],
+        "mean_diff": -0.0009363295880149872,
+        "tost_p": 0.001615953350071313,
+        "equiv": true
+      },
+      {
+        "pair": [
+          0.1,
+          100.0
+        ],
+        "mean_diff": -0.0009363295880150095,
+        "tost_p": 0.00018943237310721508,
+        "equiv": true
+      },
+      {
+        "pair": [
+          1.0,
+          10.0
+        ],
+        "mean_diff": 0.0016853932584269815,
+        "tost_p": 0.001382045746608241,
+        "equiv": true
+      },
+      {
+        "pair": [
+          1.0,
+          100.0
+        ],
+        "mean_diff": 0.0016853932584269594,
+        "tost_p": 8.562244596206281e-05,
+        "equiv": true
+      },
+      {
+        "pair": [
+          10.0,
+          100.0
+        ],
+        "mean_diff": -2.2204460492503132e-17,
+        "tost_p": 4.7678065118618355e-07,
+        "equiv": true
+      }
+    ],
+    "theory_assumption_to_revise": ""
+  },
+  {
+    "prediction_id": "P4",
+    "dataset": "glass",
+    "test": "TOST",
+    "estimate": 0.016978193146417443,
+    "ci_lo": 0.0034043409845302356,
+    "ci_hi": 0.030552045308304653,
+    "worst_pair_mean": 0.016978193146417443,
+    "margin": 0.005,
+    "verdict": "REJECTED",
+    "seed_set": "P4",
+    "pairwise": [
+      {
+        "pair": [
+          0.1,
+          1.0
+        ],
+        "mean_diff": 0.006230529595015569,
+        "tost_p": 0.5832557875712765,
+        "equiv": false
+      },
+      {
+        "pair": [
+          0.1,
+          10.0
+        ],
+        "mean_diff": 0.007009345794392522,
+        "tost_p": 0.6485913141028048,
+        "equiv": false
+      },
+      {
+        "pair": [
+          0.1,
+          100.0
+        ],
+        "mean_diff": 0.016978193146417443,
+        "tost_p": 0.9592502051670829,
+        "equiv": false
+      },
+      {
+        "pair": [
+          1.0,
+          10.0
+        ],
+        "mean_diff": 0.0007788161993769527,
+        "tost_p": 0.1977249936612084,
+        "equiv": false
+      },
+      {
+        "pair": [
+          1.0,
+          100.0
+        ],
+        "mean_diff": 0.01074766355140187,
+        "tost_p": 0.8703420039764791,
+        "equiv": false
+      },
+      {
+        "pair": [
+          10.0,
+          100.0
+        ],
+        "mean_diff": 0.009968847352024917,
+        "tost_p": 0.8096437124423862,
+        "equiv": false
+      }
+    ],
+    "theory_assumption_to_revise": "Revise Prop.1: C/sqrt(alpha0) bound too loose"
+  },
+  {
+    "prediction_id": "P4",
+    "dataset": "ecoli",
+    "test": "TOST",
+    "estimate": 0.002281746031746044,
+    "ci_lo": -0.019342044178334402,
+    "ci_hi": 0.02390553624182649,
+    "worst_pair_mean": 0.002281746031746044,
+    "margin": 0.005,
+    "verdict": "REJECTED",
+    "seed_set": "P4",
+    "pairwise": [
+      {
+        "pair": [
+          0.1,
+          1.0
+        ],
+        "mean_diff": -0.0012896825396825481,
+        "tost_p": 0.36137579225644717,
+        "equiv": false
+      },
+      {
+        "pair": [
+          0.1,
+          10.0
+        ],
+        "mean_diff": -0.0016865079365079379,
+        "tost_p": 0.3689132460216762,
+        "equiv": false
+      },
+      {
+        "pair": [
+          0.1,
+          100.0
+        ],
+        "mean_diff": 0.000595238095238106,
+        "tost_p": 0.3100374766544479,
+        "equiv": false
+      },
+      {
+        "pair": [
+          1.0,
+          10.0
+        ],
+        "mean_diff": -0.0003968253968253899,
+        "tost_p": 0.3345354678508373,
+        "equiv": false
+      },
+      {
+        "pair": [
+          1.0,
+          100.0
+        ],
+        "mean_diff": 0.001884920634920654,
+        "tost_p": 0.35409749569624044,
+        "equiv": false
+      },
+      {
+        "pair": [
+          10.0,
+          100.0
+        ],
+        "mean_diff": 0.002281746031746044,
+        "tost_p": 0.3994589122398915,
+        "equiv": false
+      }
+    ],
+    "theory_assumption_to_revise": "Revise Prop.1: C/sqrt(alpha0) bound too loose"
+  },
+  {
+    "prediction_id": "P4",
+    "dataset": "aggregation",
+    "test": "TOST",
+    "estimate": 0.0017343485617597391,
+    "ci_lo": -0.0009620328354222069,
+    "ci_hi": 0.004430729958941685,
+    "worst_pair_mean": 0.0017343485617597391,
+    "margin": 0.005,
+    "verdict": "CONFIRMED",
+    "seed_set": "P4",
+    "pairwise": [
+      {
+        "pair": [
+          0.1,
+          1.0
+        ],
+        "mean_diff": 0.0016920473773265887,
+        "tost_p": 0.0010363713980143941,
+        "equiv": true
+      },
+      {
+        "pair": [
+          0.1,
+          10.0
+        ],
+        "mean_diff": 0.0007191201353638414,
+        "tost_p": 1.1454694534362604e-18,
+        "equiv": true
+      },
+      {
+        "pair": [
+          0.1,
+          100.0
+        ],
+        "mean_diff": 0.0017343485617597391,
+        "tost_p": 0.009661121257641899,
+        "equiv": true
+      },
+      {
+        "pair": [
+          1.0,
+          10.0
+        ],
+        "mean_diff": -0.0009729272419627473,
+        "tost_p": 8.544025790410456e-05,
+        "equiv": true
+      },
+      {
+        "pair": [
+          1.0,
+          100.0
+        ],
+        "mean_diff": 4.230118443315038e-05,
+        "tost_p": 0.00014924100886062118,
+        "equiv": true
+      },
+      {
+        "pair": [
+          10.0,
+          100.0
+        ],
+        "mean_diff": 0.0010152284263958977,
+        "tost_p": 0.002294201402039275,
+        "equiv": true
+      }
+    ],
+    "theory_assumption_to_revise": ""
+  },
+  {
+    "prediction_id": "P4",
+    "dataset": "compound",
+    "test": "TOST",
+    "estimate": 0.015037593984962405,
+    "ci_lo": -0.006331467666871829,
+    "ci_hi": 0.03640665563679664,
+    "worst_pair_mean": 0.015037593984962405,
+    "margin": 0.005,
+    "verdict": "REJECTED",
+    "seed_set": "P4",
+    "pairwise": [
+      {
+        "pair": [
+          0.1,
+          1.0
+        ],
+        "mean_diff": -0.00409356725146199,
+        "tost_p": 0.36139737481471046,
+        "equiv": false
+      },
+      {
+        "pair": [
+          0.1,
+          10.0
+        ],
+        "mean_diff": -0.00025062656641604194,
+        "tost_p": 0.07361231486916701,
+        "equiv": false
+      },
+      {
+        "pair": [
+          0.1,
+          100.0
+        ],
+        "mean_diff": 0.010944026733500416,
+        "tost_p": 0.7053003305333263,
+        "equiv": false
+      },
+      {
+        "pair": [
+          1.0,
+          10.0
+        ],
+        "mean_diff": 0.003842940685045948,
+        "tost_p": 0.32230704349224654,
+        "equiv": false
+      },
+      {
+        "pair": [
+          1.0,
+          100.0
+        ],
+        "mean_diff": 0.015037593984962405,
+        "tost_p": 0.8276765411481424,
+        "equiv": false
+      },
+      {
+        "pair": [
+          10.0,
+          100.0
+        ],
+        "mean_diff": 0.011194653299916457,
+        "tost_p": 0.7108519170911916,
+        "equiv": false
+      }
+    ],
+    "theory_assumption_to_revise": "Revise Prop.1: C/sqrt(alpha0) bound too loose"
+  }
+]

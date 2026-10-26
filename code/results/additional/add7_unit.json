@@ -1,0 +1,171 @@
+{
+  "exp_id": 7,
+  "title": "Meta-analysis: Does the Full-minus-NoExploration Gap Scale with Dataset Complexity?",
+  "evidence_label": "exploratory",
+  "status": "complete",
+  "motivation": "As a post-hoc synthesis across the six frozen benchmarks, we ask whether the advantage of the full P2 acquisition (robust weight + exploration bonus $h_i=\\|u_i-\\bar u\\|_1$ minus redundancy) grows with dataset difficulty. We regress the ACC gap at the 10% checkpoint on dimension $d$, sample size $N$, and a data-overlap proxy (leave-one-out 1-nearest-neighbour classification error on the frozen standardized features).",
+  "hypothesis": "",
+  "design": "Six benchmarks (iris, wine, glass, ecoli, aggregation, compound). Outcome: mean paired ACC gap = ACC(P2_Full) - ACC(P2_NoExploration) at budget=10%, 30-seed confirmatory shards, paired by seed, ACC after Hungarian matching. Predictors: d = feature dimension, N = sample size, overlap = LOO 1-NN error. Pearson + Spearman univariate, then OLS gap ~ d + N + overlap.",
+  "protocol": {
+    "datasets": [
+      "iris",
+      "wine",
+      "glass",
+      "ecoli",
+      "aggregation",
+      "compound"
+    ],
+    "methods": [
+      "P2_Full",
+      "P2_NoExploration"
+    ],
+    "n_seeds_gap": 30,
+    "budgets": [
+      0.1
+    ],
+    "factors": {
+      "n_datasets": 6,
+      "residual_df": 2,
+      "model_r_squared": 0.44796964135895023,
+      "overlap_estimator": "loo_1nn_error"
+    },
+    "checkpoint": 0.1
+  },
+  "tables": [
+    {
+      "caption": "Table. Meta-features and paired gaps at the 10% checkpoint.",
+      "header": [
+        "Dataset",
+        "d",
+        "N",
+        "overlap 1-NN",
+        "gap ACC@10%",
+        "gap NMI@10%",
+        "gap ARI@10%"
+      ],
+      "rows": [
+        [
+          "iris",
+          "4",
+          "150",
+          "0.053",
+          "-0.008",
+          "-0.003",
+          "-0.010"
+        ],
+        [
+          "wine",
+          "13",
+          "178",
+          "0.045",
+          "-0.001",
+          "-0.000",
+          "-0.002"
+        ],
+        [
+          "glass",
+          "9",
+          "214",
+          "0.299",
+          "+0.004",
+          "-0.025",
+          "-0.010"
+        ],
+        [
+          "ecoli",
+          "7",
+          "336",
+          "0.193",
+          "-0.013",
+          "-0.013",
+          "-0.023"
+        ],
+        [
+          "aggregation",
+          "2",
+          "788",
+          "0.003",
+          "-0.003",
+          "-0.006",
+          "-0.008"
+        ],
+        [
+          "compound",
+          "2",
+          "399",
+          "0.010",
+          "-0.016",
+          "-0.019",
+          "-0.024"
+        ]
+      ],
+      "notes": [
+        "|L0|/N = 0.02 fixed (INIT_FRAC); ACC after Hungarian matching.",
+        "overlap = leave-one-out 1-NN error on frozen StandardScaler features.",
+        "n=6 datasets; all correlations and the multiple regression are exploratory."
+      ]
+    },
+    {
+      "caption": "Table. Univariate associations (gap ACC@10% vs predictor).",
+      "header": [
+        "Predictor",
+        "Pearson r",
+        "Pearson p",
+        "Spearman r",
+        "Spearman p"
+      ],
+      "rows": [
+        [
+          "d",
+          "0.572",
+          "0.236",
+          "0.638",
+          "0.173"
+        ],
+        [
+          "N",
+          "-0.123",
+          "0.817",
+          "-0.314",
+          "0.544"
+        ],
+        [
+          "overlap_1nn",
+          "0.378",
+          "0.460",
+          "0.314",
+          "0.544"
+        ]
+      ],
+      "notes": [
+        "Multiple OLS gap ~ d + N + overlap: R^2 = 0.448, residual df = 2.",
+        "n=6 is far below the usual 10-15 observations-per-predictor rule; treat as hypothesis-generating only."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "add7_meta_scatter.png",
+      "caption": "Fig. ACC gap @10% (P2_Full minus P2_NoExploration) against (left) dimension d, (middle) sample size N, (right) overlap proxy (LOO 1-NN error). Dashed line at gap=0; shaded band is the univariate OLS 95% pointwise CI; point labels are dataset names.",
+      "combo": true
+    }
+  ],
+  "results": "Across the n=6 benchmarks, the ACC gap at 10% ranges from -0.016 to +0.004. Univariate Pearson: gap~d r=0.572 (p=0.236), gap~N r=-0.123 (p=0.817), gap~overlap r=0.378 (p=0.460); Spearman concordant. The multiple regression gap ~ d + N + overlap has R^2 = 0.448 with only 2 residual degrees of freedom, so no coefficient is interpretable as confirmatory.",
+  "conclusion": "With n=6 the meta-analysis is strictly hypothesis-generating: the data do not support any claim that the Full-minus-NoExploration gap scales with d, N, or overlap. The planned extension to Worker C/D datasets (GMM synthetic, letter, fashion, usps) via add7_extra_datasets.csv will be needed before any directional interpretation.",
+  "support": "mixed",
+  "annotations": [
+    "exploratory",
+    "post-hoc",
+    "underpowered",
+    "n=6 (residual df=2)",
+    "merge hook: add7_extra_datasets.csv for Worker C/D datasets"
+  ],
+  "csvs": [
+    "add7_meta_features.csv",
+    "add7_meta_regression.csv"
+  ],
+  "repro_script": "add7_meta.py",
+  "fig_files": [
+    "add7_meta_scatter.png"
+  ]
+}

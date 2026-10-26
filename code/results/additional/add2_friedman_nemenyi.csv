@@ -1,0 +1,46 @@
+# per-method ranks & mean ACC
+method,formal_avg_rank,mean_ACC_6ds,role
+CoreSet,2.5,0.8106,ranked
+P2_NoRedundancy,2.833,0.8092,ranked
+P2_NoExploration,3.0,0.805,ranked
+P2_Full,4.833,0.7986,ranked
+Random,5.0,0.7923,ranked
+P2_NoRobust,5.167,0.7907,ranked
+Entropy,6.0,0.7816,ranked
+BADGE,6.667,0.7902,ranked
+OriginalP2,5.333,0.8054,archived-bug control (not ranked)
+
+# Nemenyi pairwise (sorted by |delta rank| desc)
+method_a,method_b,abs_rank_diff,CD,significant
+CoreSet,BADGE,4.167,4.2865,False
+P2_NoRedundancy,BADGE,3.833,4.2865,False
+P2_NoExploration,BADGE,3.667,4.2865,False
+Entropy,CoreSet,3.5,4.2865,False
+P2_NoRedundancy,Entropy,3.167,4.2865,False
+P2_NoExploration,Entropy,3.0,4.2865,False
+P2_NoRobust,CoreSet,2.667,4.2865,False
+Random,CoreSet,2.5,4.2865,False
+P2_NoRobust,P2_NoRedundancy,2.333,4.2865,False
+P2_Full,CoreSet,2.333,4.2865,False
+P2_NoExploration,P2_NoRobust,2.167,4.2865,False
+P2_NoRedundancy,Random,2.167,4.2865,False
+P2_NoExploration,Random,2.0,4.2865,False
+P2_Full,P2_NoRedundancy,2.0,4.2865,False
+P2_Full,BADGE,1.833,4.2865,False
+P2_Full,P2_NoExploration,1.833,4.2865,False
+Random,BADGE,1.667,4.2865,False
+P2_NoRobust,BADGE,1.5,4.2865,False
+P2_Full,Entropy,1.167,4.2865,False
+Random,Entropy,1.0,4.2865,False
+P2_NoRobust,Entropy,0.833,4.2865,False
+Entropy,BADGE,0.667,4.2865,False
+P2_NoExploration,CoreSet,0.5,4.2865,False
+P2_Full,P2_NoRobust,0.333,4.2865,False
+P2_NoRedundancy,CoreSet,0.333,4.2865,False
+P2_Full,Random,0.167,4.2865,False
+P2_NoRobust,Random,0.167,4.2865,False
+P2_NoExploration,P2_NoRedundancy,0.167,4.2865,False
+
+# meta
+test,N_datasets,k_ranked_methods,q05_k8,chi2,p,CD,supportive_blocks,supportive_chi2,supportive_p,supportive_CD,note
+Friedman + Nemenyi (Demsar 2006),6,8,3.031,16.7778,0.018886697151428537,4.2865,180,45.6343,1.0297850287976587e-07,0.7826,supportive per-seed analysis is exploratory; formal N=6 low power

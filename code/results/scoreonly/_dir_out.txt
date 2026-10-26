@@ -1,0 +1,7 @@
+﻿seed   ScoreOnly  NoExpl   diff(pp)
+   0  0.6726    0.6637   +0.89
+   1  0.5804    0.6815   -10.12
+   2  0.4673    0.6250   -15.77
+   3  0.5804    0.6250   -4.46
+   4  0.5625    0.5923   -2.98
+mean ScoreOnly=0.5726  mean NoExpl=0.6375  mean diff=-6.49 pp

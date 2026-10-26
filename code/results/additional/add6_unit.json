@@ -1,0 +1,68 @@
+{
+  "exp_id": 6,
+  "title": "Rho x Beta sensitivity grid on ecoli / compound",
+  "evidence_label": "supportive/post-hoc",
+  "status": "done",
+  "motivation": "",
+  "hypothesis": "",
+  "design": "",
+  "protocol": {
+    "datasets": [
+      "ecoli",
+      "compound"
+    ],
+    "methods": [
+      "P2_Full (coefficient sweep)"
+    ],
+    "n_seeds": 30,
+    "budgets": [
+      0.1
+    ],
+    "factors": {
+      "rho_grid": [
+        0.0,
+        0.05,
+        0.1,
+        0.15,
+        0.25,
+        0.5,
+        1.0,
+        2.0
+      ],
+      "beta_grid": [
+        0.0,
+        0.25,
+        0.5,
+        1.0,
+        2.0,
+        4.0
+      ],
+      "rho_nominal": 0.1,
+      "beta_scale": "lambda2(L_R)/n",
+      "baseline": "(rho=1,beta=1)=frozen P2_Full"
+    },
+    "checkpoint": 0.1
+  },
+  "tables": [],
+  "figures": [
+    {
+      "file": "add6_rhobeta_heatmap.png",
+      "caption": "Fig. ACC@10% over rho x beta coefficient grid (30 seeds). Boxed cell = frozen P2_Full (rho=1, beta=lambda2/n). Cool diverging colormap (teal=high, grey=mid, purple=low).",
+      "combo": true
+    }
+  ],
+  "results": "",
+  "conclusion": "",
+  "support": "mixed",
+  "annotations": [
+    "supportive/post-hoc",
+    "dense low-rho grid {0,0.05,0.1,0.15,0.25,0.5,1,2}; ecoli + compound"
+  ],
+  "csvs": [
+    "add6_rhobeta_grid.csv"
+  ],
+  "repro_script": "add6_rhobeta_grid.py",
+  "fig_files": [
+    "add6_rhobeta_heatmap.png"
+  ]
+}

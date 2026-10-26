@@ -1,0 +1,13 @@
+@echo off
+set TEMP=D:\tmp
+set TMP=D:\tmp
+set TMPDIR=D:\tmp
+set PYTHONPYCACHEPREFIX=D:\cache_pyc
+set MPLCONFIGDIR=D:\cache_mpl
+set JOBLIB_TEMP_FOLDER=D:\tmp\joblib
+set PYTHONUTF8=1
+set OMP_NUM_THREADS=1
+set OPENBLAS_NUM_THREADS=1
+set MKL_NUM_THREADS=1
+set NUMEXPR_NUM_THREADS=1
+"D:\AL_FuzzyClustering_Paper\v2_unified\.venv\Scripts\python.exe" %*

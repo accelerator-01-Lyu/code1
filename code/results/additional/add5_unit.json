@@ -1,0 +1,79 @@
+{
+  "exp_id": 5,
+  "title": "Cross-task softmax classification on fashion / usps (P2 score on LR probs)",
+  "evidence_label": "exploratory/post-hoc",
+  "status": "done",
+  "motivation": "",
+  "hypothesis": "",
+  "design": "",
+  "protocol": {
+    "datasets": [
+      "fashion",
+      "usps"
+    ],
+    "methods": [
+      "P2_Full",
+      "P2_NoExploration",
+      "Random",
+      "Entropy"
+    ],
+    "n_seeds": 20,
+    "budgets": [
+      0.05,
+      0.1,
+      0.15,
+      0.2
+    ],
+    "factors": {
+      "L0_frac": 0.02,
+      "alpha0": 50.0,
+      "M_MC": 50,
+      "rho": 0.1,
+      "kappa": 1.0,
+      "backend": "SGDClassifier log_loss"
+    },
+    "checkpoint": 0.1
+  },
+  "tables": [],
+  "figures": [
+    {
+      "file": "add5_clf_curve.png",
+      "caption": "Fig. Classification accuracy vs labeled budget on fashion and usps; solid lines = mean over 20 paired seeds, shaded band = 95% paired-t CI.",
+      "combo": false
+    },
+    {
+      "file": "add5b_budget_curve.png",
+      "caption": "Fig. 5. Budget-ACC curves on the overlapping binary task (Fashion T-shirt vs Shirt). P2_NoExploration (pink) exceeds P2_Full at every budget point; the gap widens from ~1pp at 5% to ~3pp at 30%.",
+      "combo": false
+    }
+  ],
+  "results": "Paradigm transfer: treating softmax outputs as the P2 membership U, the KL-robust score plus h_i=||u_i-u_bar||_1 ranks unlabeled points. On fashion at the 10% budget the four-method mean accuracy is P2_Full=0.727, P2_NoExploration=0.717, Random=0.722, Entropy=0.694 (20 paired seeds, 95% CI in add5_clf_summary.csv). Curves over 5/10/15/20% are shown for fashion and usps. S5 tight-budget binary add-on (T-shirt vs Shirt, N=2000): at 10% budget the mean accuracy is P2_Full=0.785, P2_NoExploration=0.799, Random=0.790, Entropy=0.821 (20 paired seeds, 10 budget points from 1% to 30%). On the overlapping binary task (Fashion T-shirt vs Shirt, logistic-regression backend), P2_NoExploration exceeds P2_Full at every budget point: +1.4pp at 10% (0.799 vs 0.785) and +3.2pp at 30% (0.818 vs 0.786). Full saturates after 15% while NoExploration keeps rising, consistent with the pathology being strongest under tight budgets. Entropy (uncertainty baseline) ranks first overall and is reported as a reference.",
+  "conclusion": "Exploratory/post-hoc cross-task check: the P2 acquisition formula is mechanical and carries over to the classification backend, but this is NOT a confirmatory clustering result; report it as a robustness probe with the attached paired CIs and Holm-adjusted p-values.",
+  "support": "mixed",
+  "annotations": [
+    "exploratory",
+    "post-hoc",
+    "backend = SGDClassifier(loss='log_loss', max_iter=30) for speed on the 256-dim pool",
+    "U = softmax predict_proba; P2 score w^rob + rho*||u-u_bar||_1 reused",
+    "batched vectorized KL-DRO gain (gamma Dirichlet, 40-pt log tau grid)",
+    "fixed lam_red=0.01 (data-dependent beta~0.009; n x n eigendecomp skipped under multi-worker memory pressure)",
+    "cosine redundancy computed row-wise (no dense n x n matrix)",
+    "local pkl subsamples: fashion N=5000 d=50, usps N=5000 d=256; c=10",
+    "20 paired seeds; budgets 5/10/15/20%",
+    "S5 add-on: fashion binary T-shirt/top(0) vs Shirt(6), N=2000, 2-class",
+    "backend LogisticRegression(lbfgs, max_iter=1000) for the binary task",
+    "tight budgets 1/2/3/5/7/10/15/20/25/30%, L0=0.5%",
+    "10-class fashion/usps results are exploratory; 2-class tight-budget is the primary S5 result"
+  ],
+  "csvs": [
+    "add5b_binary.csv",
+    "add5b_binary_summary.csv",
+    "add5_clf_summary.csv",
+    "add5_clf_curve.csv"
+  ],
+  "repro_script": "add5_clf.py",
+  "fig_files": [
+    "add5_clf_curve.png",
+    "add5b_budget_curve.png"
+  ]
+}

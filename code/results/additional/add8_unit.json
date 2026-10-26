@@ -1,0 +1,64 @@
+{
+  "exp_id": 8,
+  "title": "Runtime scaling vs N and d (P2_NoExploration)",
+  "evidence_label": "supportive",
+  "status": "done",
+  "motivation": "",
+  "hypothesis": "",
+  "design": "",
+  "protocol": {
+    "datasets": [
+      "synthetic make_blobs c=2 StandardScaler"
+    ],
+    "methods": [
+      "P2_NoExploration"
+    ],
+    "n_seeds": 5,
+    "budgets": [
+      0.02,
+      0.1
+    ],
+    "factors": {
+      "config_A_N": [
+        500,
+        1000,
+        2000,
+        5000
+      ],
+      "d_A": 20,
+      "config_B_d": [
+        5,
+        10,
+        20,
+        50
+      ],
+      "N_B": 2000
+    },
+    "checkpoint": 0.1
+  },
+  "tables": [],
+  "figures": [
+    {
+      "file": "add8_runtime_vs_N.png",
+      "caption": "Fig. Single selection round and full AL cycle (2%->10%) wall-clock vs pool size N (d=20). Log-log, 5 seeds mean +/- SD, deep fog blue.",
+      "combo": false
+    },
+    {
+      "file": "add8_runtime_vs_d.png",
+      "caption": "Fig. Wall-clock vs feature dimension d (N=2000). Flat vs d; cost dominated by N.",
+      "combo": false
+    }
+  ],
+  "results": "",
+  "conclusion": "",
+  "support": "supported",
+  "annotations": [],
+  "csvs": [
+    "add8_runtime.csv"
+  ],
+  "repro_script": "add8_runtime.py",
+  "fig_files": [
+    "add8_runtime_vs_N.png",
+    "add8_runtime_vs_d.png"
+  ]
+}

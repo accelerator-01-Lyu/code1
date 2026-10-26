@@ -1,0 +1,9 @@
+method,supportive_avg_rank_180blocks,formal_avg_rank_6ds
+CoreSet,3.811,2.5
+P2_NoRedundancy,3.95,2.833
+P2_NoExploration,4.344,3.0
+P2_NoRobust,4.397,5.167
+Entropy,4.586,6.0
+P2_Full,4.869,4.833
+BADGE,4.914,6.667
+Random,5.128,5.0

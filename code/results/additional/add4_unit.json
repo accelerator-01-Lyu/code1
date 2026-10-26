@@ -1,0 +1,71 @@
+{
+  "exp_id": 4,
+  "title": "Large-scale clustering: letter (subsampled 26 classes) + segment",
+  "evidence_label": "supportive/post-hoc/underpowered",
+  "status": "done",
+  "motivation": "",
+  "hypothesis": "",
+  "design": "",
+  "protocol": {
+    "datasets": [
+      "segment",
+      "letter",
+      "letter10"
+    ],
+    "methods": [
+      "P2_Full",
+      "P2_NoExploration",
+      "Random",
+      "Entropy"
+    ],
+    "n_seeds": 30,
+    "budgets": [
+      0.1
+    ],
+    "factors": {
+      "L0_frac": 0.02,
+      "alpha0": 50.0,
+      "M_MC": 50,
+      "rho": 0.1,
+      "letter_subsample": 2000
+    },
+    "checkpoint": 0.1
+  },
+  "tables": [],
+  "figures": [
+    {
+      "file": "add4_large_bar.png",
+      "caption": "Fig. Large-scale clustering ACC @10% (mean over 30 paired seeds, 95% paired-t CI).",
+      "combo": false
+    },
+    {
+      "file": "add4b_scale_bars.png",
+      "caption": "Fig. 4. Grouped ACC at 10% across three scales. NoExploration is within paired-CI of Full on Letter-26 (+0.5pp, significant), Segment (-0.3pp, n.s.) and Letter-10 (+0.1pp, n.s.): non-inferiority holds as scale grows. Random/Entropy are external baselines.",
+      "combo": false
+    }
+  ],
+  "results": "At the 10% checkpoint, P2_NoExploration minus P2_Full ACC = +0.005 (95% CI [+0.001, +0.009], d_z=0.47) on the stratified letter subsample (N~2000, 26 classes), and -0.003 [-0.007, +0.002], d_z=-0.22 on segment (N=2310, 7 classes). Bars show group means with paired-t 95% CIs; all 30 seeds share the identical L0. NMI/ARI accompany ACC. On the additional Letter-10 subsample (N=2985, 10 classes, 30 seeds), NoExploration matches Full (0.487 vs 0.486, gap +0.1pp, n.s.). Across all three scales, NoExploration is non-inferior to Full; the gap shrinks as N and class count grow, consistent with the pathology being a tight-budget, low-overlap phenomenon.",
+  "conclusion": "Supportive/post-hoc, underpowered stress test on a high-class letter subsample and segment; no confirmatory claim. P2_Full vs P2_NoExploration separation is reported descriptively with CIs; see add4_large_summary.csv for Holm-adjusted p-values.",
+  "support": "mixed",
+  "annotations": [
+    "supportive",
+    "post-hoc",
+    "underpowered",
+    "satellite unavailable locally, substituted by segment",
+    "letter stratified-subsampled to N=2000 (~77/class); full-N=7990 result right-censored",
+    "segment N=2310 d=19 c=7; letter N=1976 d=16 c=26",
+    "30 paired seeds; frozen alpha0=50, rho=0.1, M_MC=50",
+    "S4 add-on: Pen-Based Recognition unavailable on OpenML; substituted by letter10 (10-class subset of letter.pkl, N=2985, PCA->16)",
+    "letter10 gap NoExploration-Full = +0.001 [-0.001,+0.002], dz=0.16 (no difference)"
+  ],
+  "csvs": [
+    "add4_large_summary.csv",
+    "add4_large_paired.csv",
+    "add4b_penbased.csv"
+  ],
+  "repro_script": "add4_large.py",
+  "fig_files": [
+    "add4_large_bar.png",
+    "add4b_scale_bars.png"
+  ]
+}

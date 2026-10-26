@@ -1,0 +1,417 @@
+{
+  "exp_id": 1,
+  "title": "Budget-Curve Extension (1-30%): Where Does the Exploration Bonus Matter?",
+  "evidence_label": "supportive",
+  "status": "complete",
+  "motivation": "The frozen main curve only samples 5/10/15/20% labeled. To locate where the exploration bonus $h_i=\\|u_i-\\bar u\\|_1$ starts (and stops) separating P2_Full from P2_NoExploration, we extend the curve to 1, 2, 3, 7, 25 and 30% on the harder benchmarks using the identical frozen AL loop (|L0|=max(c,floor(0.02N)), M=50 MC draws, $\\alpha_0$=50, one greedy batch per checkpoint).",
+  "hypothesis": "",
+  "design": "Datasets: ecoli, compound, glass; all three benchmarks complete. Two methods (P2_Full vs P2_NoExploration); 30 seeds paired by seed; budgets 1,2,3,5,7,10,15,20,25,30%; metrics ACC (Hungarian), NMI, ARI. Points 5/10/15/20% are the frozen shards; the new points continue the identical seeded trajectory (verified: reproduced 5/10/15/20% match the shards to <1e-9).",
+  "protocol": {
+    "datasets": [
+      "ecoli",
+      "compound",
+      "glass"
+    ],
+    "pending_datasets": [],
+    "methods": [
+      "P2_Full",
+      "P2_NoExploration"
+    ],
+    "n_seeds": 30,
+    "budgets": [
+      0.01,
+      0.02,
+      0.03,
+      0.05,
+      0.07,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3
+    ],
+    "factors": {
+      "checkpoint": 0.1,
+      "determinism_max_abs_diff": 0.0
+    },
+    "checkpoint": 0.1
+  },
+  "tables": [
+    {
+      "caption": "Table. Paired ACC gap (P2_Full minus P2_NoExploration) across the extended budget range.",
+      "header": [
+        "Dataset",
+        "budget%",
+        "metric",
+        "gap mean",
+        "95% CI lo",
+        "95% CI hi",
+        "t",
+        "p",
+        "d_z"
+      ],
+      "rows": [
+        [
+          "ecoli",
+          "1",
+          "ACC",
+          "+0.0000",
+          "+0.0000",
+          "+0.0000",
+          "0.00",
+          "1.000",
+          "0.00"
+        ],
+        [
+          "ecoli",
+          "2",
+          "ACC",
+          "+0.0000",
+          "+0.0000",
+          "+0.0000",
+          "0.00",
+          "1.000",
+          "0.00"
+        ],
+        [
+          "ecoli",
+          "3",
+          "ACC",
+          "-0.0264",
+          "-0.0471",
+          "-0.0057",
+          "-2.61",
+          "0.014",
+          "-0.48"
+        ],
+        [
+          "ecoli",
+          "5",
+          "ACC",
+          "-0.0228",
+          "-0.0394",
+          "-0.0062",
+          "-2.82",
+          "0.009",
+          "-0.51"
+        ],
+        [
+          "ecoli",
+          "7",
+          "ACC",
+          "-0.0085",
+          "-0.0407",
+          "+0.0236",
+          "-0.54",
+          "0.592",
+          "-0.10"
+        ],
+        [
+          "ecoli",
+          "10",
+          "ACC",
+          "-0.0134",
+          "-0.0493",
+          "+0.0225",
+          "-0.76",
+          "0.452",
+          "-0.14"
+        ],
+        [
+          "ecoli",
+          "15",
+          "ACC",
+          "-0.0248",
+          "-0.0575",
+          "+0.0079",
+          "-1.55",
+          "0.132",
+          "-0.28"
+        ],
+        [
+          "ecoli",
+          "20",
+          "ACC",
+          "-0.0190",
+          "-0.0481",
+          "+0.0100",
+          "-1.34",
+          "0.191",
+          "-0.24"
+        ],
+        [
+          "ecoli",
+          "25",
+          "ACC",
+          "-0.0282",
+          "-0.0599",
+          "+0.0035",
+          "-1.82",
+          "0.079",
+          "-0.33"
+        ],
+        [
+          "ecoli",
+          "30",
+          "ACC",
+          "-0.0321",
+          "-0.0642",
+          "-0.0001",
+          "-2.05",
+          "0.049",
+          "-0.37"
+        ],
+        [
+          "compound",
+          "1",
+          "ACC",
+          "+0.0000",
+          "+0.0000",
+          "+0.0000",
+          "0.00",
+          "1.000",
+          "0.00"
+        ],
+        [
+          "compound",
+          "2",
+          "ACC",
+          "+0.0000",
+          "+0.0000",
+          "+0.0000",
+          "0.00",
+          "1.000",
+          "0.00"
+        ],
+        [
+          "compound",
+          "3",
+          "ACC",
+          "-0.0004",
+          "-0.0026",
+          "+0.0018",
+          "-0.39",
+          "0.697",
+          "-0.07"
+        ],
+        [
+          "compound",
+          "5",
+          "ACC",
+          "-0.0054",
+          "-0.0329",
+          "+0.0220",
+          "-0.40",
+          "0.689",
+          "-0.07"
+        ],
+        [
+          "compound",
+          "7",
+          "ACC",
+          "-0.0027",
+          "-0.0078",
+          "+0.0025",
+          "-1.06",
+          "0.298",
+          "-0.19"
+        ],
+        [
+          "compound",
+          "10",
+          "ACC",
+          "-0.0163",
+          "-0.0298",
+          "-0.0028",
+          "-2.46",
+          "0.020",
+          "-0.45"
+        ],
+        [
+          "compound",
+          "15",
+          "ACC",
+          "+0.0013",
+          "-0.0025",
+          "+0.0050",
+          "0.68",
+          "0.504",
+          "0.12"
+        ],
+        [
+          "compound",
+          "20",
+          "ACC",
+          "-0.0022",
+          "-0.0041",
+          "-0.0002",
+          "-2.25",
+          "0.032",
+          "-0.41"
+        ],
+        [
+          "compound",
+          "25",
+          "ACC",
+          "-0.0020",
+          "-0.0043",
+          "+0.0003",
+          "-1.77",
+          "0.086",
+          "-0.32"
+        ],
+        [
+          "compound",
+          "30",
+          "ACC",
+          "-0.0027",
+          "-0.0051",
+          "-0.0003",
+          "-2.27",
+          "0.031",
+          "-0.41"
+        ],
+        [
+          "glass",
+          "1",
+          "ACC",
+          "+0.0000",
+          "+0.0000",
+          "+0.0000",
+          "0.00",
+          "1.000",
+          "0.00"
+        ],
+        [
+          "glass",
+          "2",
+          "ACC",
+          "+0.0000",
+          "+0.0000",
+          "+0.0000",
+          "0.00",
+          "1.000",
+          "0.00"
+        ],
+        [
+          "glass",
+          "3",
+          "ACC",
+          "+0.0000",
+          "+0.0000",
+          "+0.0000",
+          "0.00",
+          "1.000",
+          "0.00"
+        ],
+        [
+          "glass",
+          "5",
+          "ACC",
+          "-0.0151",
+          "-0.0285",
+          "-0.0017",
+          "-2.31",
+          "0.028",
+          "-0.42"
+        ],
+        [
+          "glass",
+          "7",
+          "ACC",
+          "-0.0025",
+          "-0.0178",
+          "+0.0128",
+          "-0.33",
+          "0.741",
+          "-0.06"
+        ],
+        [
+          "glass",
+          "10",
+          "ACC",
+          "+0.0037",
+          "-0.0115",
+          "+0.0190",
+          "0.50",
+          "0.621",
+          "0.09"
+        ],
+        [
+          "glass",
+          "15",
+          "ACC",
+          "+0.0014",
+          "-0.0152",
+          "+0.0180",
+          "0.17",
+          "0.864",
+          "0.03"
+        ],
+        [
+          "glass",
+          "20",
+          "ACC",
+          "-0.0140",
+          "-0.0288",
+          "+0.0008",
+          "-1.94",
+          "0.063",
+          "-0.35"
+        ],
+        [
+          "glass",
+          "25",
+          "ACC",
+          "-0.0217",
+          "-0.0352",
+          "-0.0081",
+          "-3.28",
+          "0.003",
+          "-0.60"
+        ],
+        [
+          "glass",
+          "30",
+          "ACC",
+          "-0.0259",
+          "-0.0418",
+          "-0.0099",
+          "-3.32",
+          "0.002",
+          "-0.61"
+        ]
+      ],
+      "notes": [
+        "n=30 seeds per cell, paired by seed; ACC after Hungarian matching.",
+        "5/10/15/20% from frozen shards; 1/2/3/7/25/30% newly run with the identical loop.",
+        "Determinism check: reproduced 5/10/15/20% match shards to <1e-9."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "add1_budget_curve.png",
+      "caption": "Fig. Paired gap = P2_Full minus P2_NoExploration (rows: ecoli, compound, glass; columns: ACC, NMI, ARI) against labeled budget %. Band = 95% paired-t CI; dashed line at zero gap.",
+      "combo": true
+    }
+  ],
+  "results": "ACC paired gaps (Full - NoExploration): ecoli: @10% gap=-0.0134 [-0.0493,+0.0225]; @30% gap=-0.0321 [-0.0642,-0.0001] (ACC); compound: @10% gap=-0.0163 [-0.0298,-0.0028]; @30% gap=-0.0027 [-0.0051,-0.0003] (ACC); glass: @10% gap=+0.0037 [-0.0115,+0.0190]; @30% gap=-0.0259 [-0.0418,-0.0099] (ACC). The full curve (CSV add1_budget_curve_paired.csv) also reports NMI and ARI at every budget.",
+  "conclusion": "The extended budget curve is supportive/post-hoc evidence about WHERE the exploration bonus matters; it does not by itself constitute a confirmatory superiority claim (the formal P1 noninferiority test lives in the main preregistered analysis).",
+  "support": "mixed",
+  "annotations": [
+    "supportive",
+    "post-hoc",
+    "exploratory",
+    "new budget points 1/2/3/7/25/30% re-run; 5/10/15/20% from frozen shards",
+    "30 seeds, paired by seed"
+  ],
+  "csvs": [
+    "add1_budget_curve_paired.csv",
+    "add1_new_budget_raw.csv"
+  ],
+  "repro_script": "add1_aggregate.py",
+  "fig_files": [
+    "add1_budget_curve.png"
+  ]
+}

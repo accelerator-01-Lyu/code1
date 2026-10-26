@@ -1,0 +1,2 @@
+budget,NMI,ARI,ACC,dataset,method,seed_set,seed,l0,eta,alpha0,lam_mult,outlier_rate,outlier_rate_pool,eccentric_rate
+0.1,0.6376836082727062,0.5311563435628026,0.6934523809523809,ecoli,P2_NoExploration,P3,14,0,0.0,50.0,1.0,0.6923076923076923,0.11538461538461539,0.3076923076923077

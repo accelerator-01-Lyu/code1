@@ -1,0 +1,176 @@
+{
+  "exp_id": 3,
+  "title": "Synthetic GMM control: gap~overlap/d/n",
+  "evidence_label": "supportive",
+  "status": "complete",
+  "motivation": "The main paired contrast (P2_Full vs P2_NoExploration) is confounded across real benchmarks by dataset geometry, dimensionality and overlap. This unit isolates the exploration reward $\\rho h_i$ in a fully controlled Gaussian mixture, varying class overlap (ratio = mean center distance / within-class std), ambient dimension $d$, sample size $n$, and number of classes $c$.",
+  "hypothesis": "The exploration benefit (gap = ACC@10% of P2_Full minus P2_NoExploration) is positive and grows as overlap increases (smaller ratio), as ambient dimension grows, and is larger for smaller $n$.",
+  "design": "2x4x4x5 factorial: c in {2,3}; d in {2,5,10,20}; n in {200,500,1000,2000}; ratio in {0.5,1,1.5,2,3}. Within-class covariance $I_d$; c centers on a regular simplex with pairwise distance = ratio (trailing dimensions are nuisance noise). Semi-supervised FCM backend reused from the main driver; P2_Full vs P2_NoExploration, 20 seeds, |L0|=max(c, 0.02N), checkpoint 10% labeled. ACC after Hungarian matching; paired by seed.",
+  "protocol": {
+    "datasets": [
+      "synthetic_GMM"
+    ],
+    "methods": [
+      "P2_Full",
+      "P2_NoExploration"
+    ],
+    "n_seeds": 20,
+    "budgets": [
+      0.1
+    ],
+    "factors": {
+      "c": [
+        2,
+        3
+      ],
+      "d": [
+        2,
+        5,
+        10,
+        20
+      ],
+      "n": [
+        200,
+        500,
+        1000,
+        2000
+      ],
+      "ratio": [
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        3.0
+      ]
+    },
+    "checkpoint": 0.1
+  },
+  "tables": [
+    {
+      "caption": "Table. OLS of paired gap (ACC) on ratio + d + n (continuous factors centered). R^2=0.002 over 900 seed-level observations.",
+      "header": [
+        "term",
+        "coef",
+        "SE",
+        "t",
+        "p",
+        "partial eta^2"
+      ],
+      "rows": [
+        [
+          "intercept",
+          "-0.0001",
+          "0.0010",
+          "-0.12",
+          "0.9013",
+          "-"
+        ],
+        [
+          "ratio",
+          "-0.0002",
+          "0.0012",
+          "-0.20",
+          "0.8408",
+          "0.0000"
+        ],
+        [
+          "d",
+          "-0.0003",
+          "0.0004",
+          "-0.70",
+          "0.4811",
+          "0.0006"
+        ],
+        [
+          "n",
+          "0.0000",
+          "0.0000",
+          "0.97",
+          "0.3306",
+          "0.0011"
+        ]
+      ],
+      "notes": [
+        "20 seeds per (c,d,n,ratio) cell; gap = ACC@10% P2_Full - P2_NoExploration, paired by seed.",
+        "partial eta^2 = (SSE_reduced - SSE_full)/SSE_reduced."
+      ]
+    },
+    {
+      "caption": "Table. ANOVA on gap: main effects plus ratio:d and ratio:n interactions.",
+      "header": [
+        "term",
+        "F",
+        "p",
+        "partial eta^2"
+      ],
+      "rows": [
+        [
+          "ratio",
+          "0.04",
+          "0.8408",
+          "0.0000"
+        ],
+        [
+          "d",
+          "0.50",
+          "0.4813",
+          "0.0006"
+        ],
+        [
+          "n",
+          "0.95",
+          "0.3308",
+          "0.0011"
+        ],
+        [
+          "ratio:d",
+          "1.08",
+          "0.298",
+          "0.0012"
+        ],
+        [
+          "ratio:n",
+          "0.18",
+          "0.6758",
+          "0.0002"
+        ]
+      ],
+      "notes": [
+        "Type-III-style SSE-drop tests; R^2=0.003."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "add3_gmm_gap_vs_ratio.png",
+      "caption": "Fig. Paired gap (ACC@10%) vs class-overlap ratio. Columns = ambient dimension d, rows = sample size n; purple = c=2, pink = c=3; shaded band = 95% paired CI over 20 seeds; dashed line = zero gap.",
+      "combo": false
+    },
+    {
+      "file": "add3_gmm_interaction.png",
+      "caption": "Fig. Gap ~ ratio interaction plot faceted by d; lines = sample size n.",
+      "combo": false
+    }
+  ],
+  "results": "Across 45 cells (20 seeds each, c=[2] primary), the mean paired gap = -0.000 ACC (SD of cell means 0.007). Gap by ratio: r=0.5: -0.001, r=1.0: 0.003, r=1.5: -0.002, r=2.0: -0.001, r=3.0: 0.000. The strongest exploration advantage occurs at c=2, d=5, n=200, ratio=1.0 (gap=0.017, dz=0.31); the smallest gap occurs at c=2, d=10, n=200, ratio=2.0 (gap=-0.019, dz=-0.48). In the OLS, ratio coef=-0.0002 (p=0.841), d coef=-0.0003 (p=0.481), n coef=0.00000 (p=0.331).",
+  "conclusion": "On the partial c=2 synthetic-GMM grid available at hand-off, the paired gap between P2_Full and P2_NoExploration is statistically indistinguishable from zero: mean gap = -0.000 ACC, OLS R^2 = 0.002, and no factor (ratio, d, n, nor the ratio:d / ratio:n interactions) reaches p<0.05. The pre-registered expectation that the exploration reward grows under heavier overlap (smaller ratio) is NOT supported by this slice (ratio coef=-0.0002, p=0.841). Cell-level gaps scatter symmetrically around zero (max +0.017, min -0.019 ACC), consistent with sampling noise. This unit is exploratory/underpowered: c=3 and d=20 cells are still being appended in the background; the null verdict may revise once the full grid lands, but no directional exploration advantage is visible so far.",
+  "support": "not supported",
+  "annotations": [
+    "supportive",
+    "exploratory",
+    "underpowered: c=3 and d=20 arms not run; inference on c=2, d in {2,5,10}",
+    "partial grid: 900/3200 rows, c=2 subset, c=3 deferred, underpowered",
+    "20 seeds",
+    "synthetic control (no real benchmark)"
+  ],
+  "csvs": [
+    "add3_gmm_long.csv",
+    "add3_gmm_summary.csv",
+    "add3_gmm_regression.csv"
+  ],
+  "repro_script": "add3_gmm.py",
+  "fig_files": [
+    "add3_gmm_gap_vs_ratio.png",
+    "add3_gmm_interaction.png"
+  ]
+}

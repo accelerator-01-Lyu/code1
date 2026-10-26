@@ -1,0 +1,22 @@
+{
+  "instance_id": 67,
+  "overlap_target": 0.9,
+  "overlap_realized_min": 0.9,
+  "overlap_realized_mean": 0.9190983005625053,
+  "overlap_realized_max": 0.9381966011250106,
+  "overlap_dev_abs_max": 0.038196601125010554,
+  "block": "balanced",
+  "c": 5,
+  "d": 2,
+  "N": 500,
+  "n_per_class": [
+    100,
+    100,
+    100,
+    100,
+    100
+  ],
+  "seed": 1067,
+  "scale_lambda": 0.1051462224238267,
+  "schedule_row": 13
+}

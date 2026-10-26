@@ -1,0 +1,5 @@
+# Optional manuscript / monitoring tools; not needed for core smoke tests.
+psutil
+python-docx
+PyMuPDF
+pywin32; sys_platform == "win32"

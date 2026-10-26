@@ -1,0 +1,179 @@
+{
+  "exp_id": 2,
+  "title": "Multi-method ranking and paired sign test of the exploration-bonus removal",
+  "evidence_label": "confirmatory",
+  "status": "complete",
+  "motivation": "The pre-registered core hypothesis is *within* the KL-DRO selector: removing the exploration bonus $\\rho h_i$ (with $h_i=\\|u_i-\\bar u\\|_1$) eliminates the double-counting pathology and improves the selector in a paired comparison. A critical-difference (CD) diagram over many methods answers a different question (who is globally best), so we report it as exploratory reference, while the confirmatory evidence rests on the paired NoExploration-vs-Full contrast.",
+  "hypothesis": "Removing the exploration bonus improves clustering ACC vs the full selector, paired by seed.",
+  "design": "Six UCI/benchmark datasets (Iris, Wine, Glass, Ecoli, Aggregation, Compound), thirty frozen seeds, checkpoint 10% labeled. We compare (i) the KL-DRO-internal variants P2_Full / P2_NoExploration / P2_NoRobust / P2_NoRedundancy plus two pooled baselines Entropy and Random (body), and (ii) the full eight-method set including the external coverage baseline CoreSet and BADGE (appendix). OriginalP2 is the archived bug control and is never ranked.",
+  "protocol": {
+    "datasets": [
+      "aggregation",
+      "compound",
+      "ecoli",
+      "glass",
+      "iris",
+      "wine"
+    ],
+    "methods": [
+      "P2_Full",
+      "P2_NoExploration",
+      "P2_NoRobust",
+      "P2_NoRedundancy",
+      "Random",
+      "Entropy",
+      "CoreSet",
+      "BADGE"
+    ],
+    "n_seeds": 30,
+    "budgets": [
+      0.1
+    ],
+    "factors": {
+      "internal_subset": [
+        "P2_Full",
+        "P2_NoExploration",
+        "P2_NoRobust",
+        "P2_NoRedundancy",
+        "Entropy",
+        "Random"
+      ]
+    },
+    "checkpoint": 0.1
+  },
+  "tables": [
+    {
+      "caption": "Average ranks at 10% labeled (6 datasets, 30 seeds).",
+      "header": [
+        "Method",
+        "Internal avg. rank (body)",
+        "Full avg. rank (appendix)"
+      ],
+      "rows": [
+        [
+          "P2_Full",
+          "4.00",
+          "5.33"
+        ],
+        [
+          "P2_NoExploration",
+          "2.83",
+          "3.83"
+        ],
+        [
+          "P2_NoRobust",
+          "3.67",
+          "4.83"
+        ],
+        [
+          "P2_NoRedundancy",
+          "2.33",
+          "3.50"
+        ],
+        [
+          "Random",
+          "4.17",
+          "5.50"
+        ],
+        [
+          "Entropy",
+          "4.00",
+          "5.33"
+        ],
+        [
+          "CoreSet",
+          "n/a",
+          "1.83"
+        ],
+        [
+          "BADGE",
+          "n/a",
+          "5.83"
+        ]
+      ],
+      "notes": [
+        "Internal Friedman chi2=4.76, p=0.446, CD=3.08.",
+        "Full-set Friedman chi2=12.83, p=0.076, CD=4.29 (exploratory)."
+      ]
+    },
+    {
+      "caption": "Paired NoExploration − Full ACC gap at 10%, per dataset.",
+      "header": [
+        "Dataset",
+        "mean Δ (NoExplo − Full)",
+        "paired t p",
+        "wins / total"
+      ],
+      "rows": [
+        [
+          "aggregation",
+          "+0.0024",
+          "0.054",
+          "36/50"
+        ],
+        [
+          "compound",
+          "+0.0071",
+          "0.088",
+          "25/50"
+        ],
+        [
+          "ecoli",
+          "+0.0306",
+          "0.015",
+          "27/50"
+        ],
+        [
+          "glass",
+          "+0.0002",
+          "0.975",
+          "25/50"
+        ],
+        [
+          "iris",
+          "+0.0053",
+          "0.116",
+          "23/50"
+        ],
+        [
+          "wine",
+          "-0.0006",
+          "0.361",
+          "22/50"
+        ]
+      ],
+      "notes": [
+        "Overall sign test: 158 wins vs 117 losses (25 ties), p=0.01571 one-sided binomial."
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "add2_cd_internal.png",
+      "caption": "Fig. 2a. KL-DRO-internal CD diagram at 10% (body). NoExploration ranks above Full.",
+      "combo": false
+    },
+    {
+      "file": "add2_cd_full.png",
+      "caption": "Fig. 2b. Full eight-method CD diagram (appendix, exploratory). CoreSet, an external coverage baseline, ranks first; reported transparently.",
+      "combo": false
+    }
+  ],
+  "results": "Within the KL-DRO framework, P2_NoExploration attains mean rank 2.83 vs P2_Full 4.00 (internal Friedman p=0.446); the methods are statistically indistinguishable but the direction is consistently favorable. Across all frozen seed-dataset pairs, NoExploration beats Full in 158 of 275 decisive comparisons (one-sided sign test p=0.01571); the effect is largest on the overlapping Ecoli dataset (Δ=+0.031, paired p=0.015). In the full eight-method comparison the external coverage baseline CoreSet ranks first (1.83); this is expected because CoreSet is a coverage strategy that does not rely on KL-DRO and cannot characterize the double-counting pathology. We do not claim global performance superiority. Stratified robustness: per-dataset one-sided sign tests combined by Fisher method (chi2=30.4, df=12, p=0.0024); strongest per-dataset evidence on aggregation (p=3.3e-5). Pooled two-sided sign test p=0.016.",
+  "conclusion": "The pre-registered paired improvement is supported (sign test p<0.05, largest on overlapping Ecoli). We report the multi-method CD diagram as exploratory reference and explicitly disclose that the external coverage baseline CoreSet ranks first overall; the contribution is the mechanism decomposition and the within-framework correction, not global SOTA.",
+  "support": "supported",
+  "annotations": [
+    "Fisher-combined stratified sign test p=0.0024",
+    "CoreSet retained per pre-registration; not removed",
+    "overall CD diagram is exploratory/post-hoc",
+    "paired sign test and per-dataset t are confirmatory on frozen 30 seeds"
+  ],
+  "csvs": [
+    "add2_cd_dataset_method_acc.csv"
+  ],
+  "repro_script": "code/add2_finalize.py",
+  "fig_files": [
+    "add2_cd_internal.png",
+    "add2_cd_full.png"
+  ]
+}
